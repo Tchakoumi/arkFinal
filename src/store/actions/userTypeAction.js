@@ -12,3 +12,29 @@ export const createUserType=(userType)=>{
         })
     }
 };
+
+export const readUserType=((dispatch)=>{
+    firebase.firestore().collection('userType').get().then((querySnapshot)=>{
+        let data=[]
+        querySnapshot.forEach(doc=>data=[...data, {...doc.data()}])
+        dispatch({type:'READ_USER_TYPE', payload:data})
+    }).catch(err=>dispatch({type:'READ_USER_TYPE_ERROR', err}))
+})
+
+
+
+export const deleteUserType=(document)=>{
+    return(dispatch)=>{
+        firebase.firestore().collection('userType').doc(document).update({deleted:true})
+        .then((dispatch({type:'DELETE_USER_TYPE'})))
+        .catch(err=>dispatch({type:'DELETE_USER_TYPE_ERROR', err}))
+    }
+}
+
+export const updateUserType=(updateObject, document)=>{
+    return(dispatch)=>{
+        firebase.firestore().collection('userType').doc(document).update(updateObject)
+        .then((dispatch({type:'UPDATE_USER_TYPE', payload:updateObject})))
+        .catch(err=>dispatch({type:'UPDATE_USER_TYPE_ERROR', err}))
+    }
+}
