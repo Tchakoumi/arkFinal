@@ -15,6 +15,7 @@ import townQuarterReducer from './townQuarterReducer'
 import townReducer from './townReducer'
 import userReducer from './userReducer'
 import userTypeReducer from './userTypeReducer'
+import messageReducer from './messageReducer'
 
 
 const rootReducer = combineReducers({
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
     town: townReducer,
     user: userReducer,
     userType: userTypeReducer,
+    message: messageReducer,
 })
 
 export default rootReducer
