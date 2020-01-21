@@ -1,0 +1,47 @@
+.addPersonnelContainer{
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    align-content: center;
+    background-color: coral;
+    height: 100vh;
+    overflow: auto;
+    grid-gap: 0;
+    /* font-family: Arial, "Tangerine", Helvetica, sans-serif; */
+}
+
+.addPersonnelTitle{
+    font: bolder;
+    font-size: 32px;
+}
+
+.addPersonnelLinks{
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 7px;
+}
+
+.addPersonnelLink{
+    background-color: black;
+    color: white;
+    width: 250px;
+    padding: 5px;
+    border-radius: 20px;
+    justify-self: center;
+    font-size: 25px;
+}
+
+.dataBlock{
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+}
+
+.buton{
+    justify-self: center;
+    border-radius: 7px;
+}
+
+.fa-times{
+    justify-self: right;
+}
