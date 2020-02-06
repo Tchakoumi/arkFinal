@@ -1,0 +1,109 @@
+.Caracteristiques, .data {
+    display: grid;
+    grid-template-columns: repeat(6, 190px);
+    justify-content: center;
+}
+
+.Caracteristiques label{
+    text-align: center;
+    width: 190px;
+}
+
+.data{
+    display: grid;
+    grid-template-columns: repeat(6, 190px);
+}
+
+.data img{
+    border-top: 1px solid black;
+    width: 190px;
+    height: 190px;
+}
+
+.imgCoupon{
+    border-left: 1px solid black;
+}
+
+.data label, .data input{
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    vertical-align: inherit;
+    text-align: center;
+}
+
+.data input:focus{
+    outline: none;
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.data input{
+    outline: none;
+    background-color: rgb(221, 217, 217);
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.data label:last-of-type{
+    border-right: 1px solid black;
+}
+
+.Contenu{
+    width:5px;
+    border-left:1px solid gray;
+    height:200px;
+}
+
+.logo{
+    position: absolute; 
+    left: 150px; 
+    top: 60px;
+    margin-right: 300px;
+}
+
+select:focus{
+    outline: none;
+    padding: 4px;
+    border-bottom: 1px solid #10f551;
+}
+
+input:focus.Coupon, .Coupon{
+    /* outline: none; */
+    /* padding: 4px; */
+    /* font-weight: bolder; */
+    /* background-color: #B6AEAE; */
+    width: 70%;
+}
+
+.total{
+    position: relative;
+    top: 100px;
+    left: 400px;
+    font-weight: bolder;
+}
+
+.bouton{
+    text-align: center;
+    background-color: #10f551;
+    color: #fff;
+    padding: 5px 30px;
+    font-size: 1em;
+    font-weight: lighter;
+    border-radius: 5px;
+    position: relative;
+    top: 100px;
+    left: 420px;
+
+}
+
+input:focus::placeholder{
+    color: transparent;
+}
+
+
+/*.Coupon{
+    border-radius: 10px;
+}*/

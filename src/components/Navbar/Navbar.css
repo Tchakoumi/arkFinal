@@ -1,0 +1,26 @@
+
+ul li {
+    list-style-type: none;
+    margin:50px;
+    padding: 0;
+    display:inline;
+
+   
+}
+
+/*li{
+    float: right;
+    display:grid;
+    color:black;
+    text-align: center;
+    padding:0;
+}*/
+
+.right{
+    text-align: end;
+    background-color: rgba(242, 245, 234, 0.72);
+    margin-top: 0px;
+    line-height: 50px;
+}
+
+

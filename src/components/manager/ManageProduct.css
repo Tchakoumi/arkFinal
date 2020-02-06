@@ -1,0 +1,87 @@
+.overallManageProductHolder{
+    display: grid;
+}
+
+.overallManageProductContainer{
+    display: grid;
+    justify-content: center;
+    align-content: flex-start;
+    height: 100vh;
+}
+
+.header{
+    background-color: black;
+    margin-top: 70px;
+    justify-self: center;
+    padding-top: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: grid;
+    grid-auto-flow: column;
+    width: 60vw;
+    align-content: center;
+}
+
+form .rowTitle:first-of-type{
+    margin-top: -5px;
+}
+
+.displayInfo{
+    height: 80vh;
+    width: 90vw;
+    padding-top: 5px;
+    /* background-color: red; */
+    border-top:none;
+    border-radius: 10px;
+    display: grid;
+    overflow-y: scroll;
+}
+
+.displayInfo form, .displayInfo form section{
+    display: grid;
+}
+
+.displayInfo form label{
+    background-color: aqua;
+    align-self: baseline;
+    justify-self: center;
+    width: 85vw;
+    border-radius: 5px;
+    padding: 5px 3px;
+}
+
+.displayInfo form section .rowData{
+    justify-self: center;
+    margin-top: 0;
+    margin-bottom: 40px;
+    width: 80vw;
+}
+
+.displayInfo form section .rowData:first-of-type{
+    margin-top: 5px;
+}
+
+.displayInfo form section .category{
+    margin-bottom: 10px;
+}
+
+.displayInfo form button{
+    width: 30vw;
+    padding: 13px;
+    margin-bottom: 5px;
+}
+
+.header button{
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.activeTab{
+    background-color: aqua;
+    margin-right: 0;
+}
+
+.header button:last-of-type{
+    margin-left: 0;
+}

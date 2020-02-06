@@ -1,6 +1,6 @@
 const initState={
     quarters:[
-        {deleted:false, idQuarter:"NoVXqyaagmCXbxBwX65L", idTown:"mfqPCol9SbkcGbq6Vk1S", nameQuarter:"Mfeutom"},
+        {deleted:false, idQuarter:"NoVXqyaagmCXbxBwX65L", idTown:"mfqPcol9SbkcGbq6Vk1S", nameQuarter:"Mfeutom"},
     ]
 }
 

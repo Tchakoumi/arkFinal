@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import './ConfirmOrder.css'
 import '../../sharedCSS.css'
+import { connect } from 'react-redux'
 
-export default class ConfirmOrder extends Component {
+class ConfirmOrder extends Component {
 
     state={
         location:true,
@@ -10,6 +11,8 @@ export default class ConfirmOrder extends Component {
         newReceiver:false,
         product:true,
         payment:true,
+        agency:true,
+        domicile:false,
     }
 
     loadTowns=()=>{
@@ -24,11 +27,6 @@ export default class ConfirmOrder extends Component {
         })
 
         this.loadQuarters(towns.value)
-    }
-
-    componentDidMount(){
-        if(this.state.location===true) this.loadTowns()
-        
     }
 
     changeIt=(e)=>{
@@ -85,89 +83,143 @@ export default class ConfirmOrder extends Component {
         
     }
 
+    productDetails=()=>{
+        let userId = this.props.history.location.pathname.slice(1,-8)
+        let validUser = this.props.users.find(user=>{return user.idUser === userId})
+
+        if(validUser !== undefined){
+            let userCart = this.props.carts.filter(cart=>{return cart.idUser === userId})
+            if(userCart.length===0)return(<label>No product in Cart</label>)
+            else{
+                let theProducts = userCart.map(productInCart=>{
+                    let product = this.props.products.find(product=>{return product.idProduct===productInCart.idProduct})
+                    let sizeAndPrice=this.props.productSizes.find(prodSize=>{return prodSize.idProductSize===productInCart.idProductSize})
+                    return(
+                        <div className="productDetail">
+                            <img className="thisImage" src="" alt="product" />
+                            <label className="thisName">{product.nameProduct}</label>
+                            <label className="thisPrice">Prix: {sizeAndPrice.price+" XAF"}</label>
+                            <label className="thisPrice">Quantite: {productInCart.quantity}</label>
+                        </div>
+                    )
+                })
+                return theProducts
+            }
+        }
+        else this.props.history.push("/signin")
+    }
+
+    calculateTotalAmount=()=>{
+        let userId = this.props.history.location.pathname.slice(1,-8)
+        let validUser = this.props.users.find(user=>{return user.idUser === userId})
+
+        if(validUser !== undefined){
+            let userCart = this.props.carts.filter(cart=>{return cart.idUser === userId})
+            if(userCart.length===0)return(
+                <div className="paymentDetails">
+                    <div className="totalPayable">
+                        <label>Montant total a payer: </label>
+                        <label className="note">0 XAF</label>
+                    </div>
+                </div>
+            )
+            else{
+                let theProducts = userCart.map(productInCart=>{
+                    let sizeAndPrice=this.props.productSizes.find(prodSize=>{return prodSize.idProductSize===productInCart.idProductSize})
+                    return sizeAndPrice.price*productInCart.quantity
+                })
+                let finalPrice=0
+                for(let i=0;i<theProducts.length; i++){
+                    finalPrice = finalPrice+theProducts[i]
+                }
+                console.log(theProducts, finalPrice)
+                return(
+                    <div className="paymentDetails">
+                        <div className="totalPayable">
+                            <label>Montant total a payer: </label>
+                            <label className="note">{finalPrice+" XAF"}</label>
+                        </div>
+                        <label className="note">Paiement a livraison</label>
+                    </div>
+                )
+            }
+        }
+        else this.props.history.push("/signin")
+    }
+
+    userDetails=()=>{
+        let userId = this.props.history.location.pathname.slice(1,-8)
+        let validUser = this.props.users.find(user=>{return user.idUser === userId})
+
+        if(validUser !== undefined){
+            let theUser = this.props.users.find(user=>{return user.idUser === userId})
+            return (
+                <div className="test">
+                    <label>Nom: {theUser.fNameUser +" "+ theUser.lNameUser}</label>
+                    <label>Email: {theUser.emailUser}</label>
+                    <label>Telephone: {theUser.phoneUser}</label>
+                </div>
+            )
+        }
+        else this.props.history.push("/signin")
+
+    }
+
+    handleLieuLivraison=(e)=>{
+        this.setState({
+            domicile:false,
+            agency:false,
+            [e.target.id]:true,
+        })
+    }
+
+    locationDetails=()=>{
+        let userId = this.props.history.location.pathname.slice(1,-8)
+        let validUser = this.props.users.find(user=>{return user.idUser === userId})
+
+        if(validUser !== undefined){
+            let theUser = this.props.users.find(user=>{return user.idUser===userId})
+            let theQuart = this.props.quarters.find(quarter=>{return quarter.idQuarter === theUser.idQuarter})
+            let theTown = this.props.towns.find(town=>{return town.idTown === theQuart.idTown})
+            return(
+                <div>
+                    <form className="lieuRadio">
+                        <input id="domicile" onClick={this.handleLieuLivraison} type='radio' name='lieuLivraison' />Domicile
+                        <input id="agency" onClick={this.handleLieuLivraison} type='radio' name='lieuLivraison' />Agence
+                    </form>
+                    <form className="knownDetails">
+                        <label className="hlabel">Ville: {theTown.nameTown}</label>
+                        <label className="hlabel">Quartier: {theQuart.nameQuarter}</label>
+                    </form>
+                </div>
+            )
+        }
+        else this.props.history.push("/signin")
+
+    }
+
+
+
     render() {
         return (
             <div className="overallContainer">
                 <div className="labelContainer">
                     <label className="fa fa-minus-circle faLabel" id="location" onClick={this.changeIt}>  Lieu de livraison</label>
-                    {
-                        this.state.location?(
-                            <div className="locationDetails">
-                                <form>
-                                    <label>Location details</label>
-                                    <select id="towns" onChange={()=>(this.loadQuarters(document.getElementById("towns").value))}>
-                                        <option value="" disabled selected hidden>Choisissez la ville de livraison</option>
-                                    </select>
-                                    <select id="quarters">
-                                        <option value='' disabled selected hidden>Quartier de livraison</option>
-                                    </select>
-                                </form>
-                            </div>
-                        ):(null)
-                    }
+                    {this.state.location?(<div className="locationDetails">{this.locationDetails()}</div>):(null)}
                     <label className="fa fa-minus-circle faLabel" id='receiver' onClick={this.changeIt}>  Reception</label>
-                    {
-                        this.state.receiver? (
-                            <div className="test">
-                                <label>Nom: {" Tchakoumi"}</label>
-                                <label>Prenom: {" Lorrain"}</label>
-                                <label>Telephone: {" 657140183"}</label>
-                                <label>Email: {" lorraintchakoumi@gmail.com"}</label>
-                                <label className="fa fa-plus-circle" id='newReceiver' onClick={this.changeIt}>Ajouter un nouveau recepteur</label>
-                                {
-                                    this.state.newReceiver?(
-                                        <div className="addNewReceiver">
-                                            <form className="newReceiverFields">
-                                                <input type='text' placeholder="Nom" />
-                                                <input type='text' placeholder="Prenom" />
-                                                <input type='text' placeholder="Telephone" />
-                                                <input type='text' placeholder="Email" />
-                                                <button> Confirmer ajout</button>
-                                            </form>
-                                        </div>
-                                    ):(null)
-                                    
-                                }
-                            </div>
-                        ):(null)
-                    }
+                    {this.state.receiver? (this.userDetails()):(null)}
                     <label className="fa fa-minus-circle faLabel" id='product' onClick={this.changeIt}>  Produits</label>
                     {
                         this.state.product===true?(
                             <div className="chosenProducts">
-                                <div className="productDetail">
-                                    <img className='thisImage' src="" alt="product" />
-                                    <label className="thisName">{"productNameAndDetails"}</label>
-                                    <label className="thisPrice">{"price"}</label>
-                                </div>
-                                <div className="productDetail">
-                                    <img className='thisImage' src="" alt="product" />
-                                    <label className="thisName">{"productNameAndDetails"}</label>
-                                    <label className="thisPrice">{"price"}</label>
-                                </div>
-                                <div className="productDetail">
-                                    <img className='thisImage' src="" alt="product" />
-                                    <label className="thisName">{"productNameAndDetails"}</label>
-                                    <label className="thisPrice">{"price"}</label>
-                                </div>
-                                <div className="productDetail">
-                                    <img className='thisImage' src="" alt="product" />
-                                    <label className="thisName">{"productNameAndDetails"}</label>
-                                    <label className="thisPrice">{"price"}</label>
-                                </div>
+                                {this.productDetails()}
                             </div>
                         ):(null)
                     }
                     <label className="fa fa-minus-circle faLabel" id='payment' onClick={this.changeIt}>  Paiement</label>
                     {
                         this.state.payment?(
-                            <div className="paymentDetails">
-                                <div className="totalPayable">
-                                    <label >Montant total a payer: </label>
-                                    <label className='note'>{"35,000 XAF"} </label>
-                                </div>
-                                <label className="note">Paiement a livraison</label>
-                            </div>
+                            this.calculateTotalAmount()
                         ):(null)
                     }
 
@@ -177,3 +229,24 @@ export default class ConfirmOrder extends Component {
         )
     }
 }
+
+const mapStateToProps=(state)=>{
+    return{
+        products:state.product.products,
+        users:state.user.users,
+        carts:state.cart.carts,
+        quarters: state.quarter.quarters,
+        towns: state.town.towns,
+        productSizes: state.productSize.productSizes
+    }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        // createCart:(cart)=>dispatch(createCart(cart))
+    //     createConnectedUser:(user)=>dispatch(createConnectedUser(user))
+    //     // createUserSpecial:(user)=>dispatch(createUserSpecial(user))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (ConfirmOrder)

@@ -1,0 +1,12 @@
+.wrapper{
+    background: rgba(229, 229, 229, 0.29);
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 50px;
+}
+
+.brand-logo{
+    grid-column: 1 / span 1;
+    align-self: center;
+}
+

@@ -1,0 +1,44 @@
+.right{
+    display: grid;
+    align-self: center;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+}
+
+.submenu{
+    display: none;
+}
+
+.linking{
+    text-decoration: none;
+}
+
+.linking:hover .submenu{
+    display:block;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+    background-color: red;
+}
+
+.subnav-content {
+    display: none;
+    position: absolute;
+    background-color: red;
+    padding:10px;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+
+.subnav-content a {
+    text-decoration: none;
+}
+
+.subnav-content a:hover {
+    background-color: #eee;
+}
+
+.subnav:hover .subnav-content {
+    display: grid;
+    grid-auto-flow: row;
+}
