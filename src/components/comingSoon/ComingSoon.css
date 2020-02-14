@@ -1,0 +1,48 @@
+body{
+    background:url('../assets/comingSoon.png');
+    background-position:top;
+    font-family: "Montserrat", sans-serif;
+}
+
+.soonHolder{
+    display: grid;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    color:white;
+}
+
+.soonHolder h1{
+     font-size: 3rem;
+     letter-spacing: 30px;
+     /* margin: 0; */
+}
+
+.soonHolder h2{
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.count{
+    margin:40px 0;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.countd{
+    display: grid;
+    align-content: center;
+    margin: 5px;
+    width: 20vw;
+    height: 20vw;
+    border: 2px solid white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.countd span{
+    font-size: 1.3rem;
+}
