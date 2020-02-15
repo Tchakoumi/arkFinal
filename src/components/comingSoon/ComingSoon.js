@@ -28,7 +28,7 @@ class ComingSoon extends Component {
             <div className="soonContainer" id="particles-js">
                 <div className="soonHolder">
                     <h1>Wrayon</h1>
-                    <h2>We are coming soon.</h2>
+                    <h2>We are coming soon</h2>
 
                     <div className="count">
                         <div className="countd">
