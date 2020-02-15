@@ -1,7 +1,7 @@
 body{
-    background:url('../assets/comingSoon.png');
+    background:url('../assets/horizon.jpeg');
     background-size: cover;
-    background-position:top;
+    background-position:center;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -11,7 +11,7 @@ body{
     align-content: center;
     justify-content: center;
     text-align: center;
-    color:white;
+    color:black;
 }
 
 .soonHolder h1{
@@ -39,7 +39,7 @@ body{
     margin: 5px;
     width: 20vw;
     height: 20vw;
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 50%;
     overflow: hidden;
 }

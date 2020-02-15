@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './ComingSoon.css'
-
+import ParticlesBg from 'particles-bg'
 
 class ComingSoon extends Component {
 
     componentDidMount(){
         let launchDate = new Date("mar 1,2020 00:00:00").getTime();
-        let counter = setInterval(()=>{
+        setInterval(()=>{
             let now = new Date().getTime();
             let left = launchDate-now;
 
@@ -23,11 +23,9 @@ class ComingSoon extends Component {
         },1000);
     }
 
-    compon
-
     render() {
         return (
-            <div className="soonContainer">
+            <div className="soonContainer" id="particles-js">
                 <div className="soonHolder">
                     <h1>Wrayon</h1>
                     <h2>We are coming soon.</h2>
@@ -51,6 +49,7 @@ class ComingSoon extends Component {
                         </div>
                     </div>
                 </div>
+                <ParticlesBg type="ball" bg={true} />
             </div>
         )
     }
