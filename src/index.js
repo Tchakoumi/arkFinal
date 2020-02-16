@@ -11,10 +11,11 @@ import App from './App';
 import 'firebase/auth'
 import './index.css';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(thunk)
-    ));
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeWt=compose;
+const store = createStore(rootReducer, 
+    composeWt(applyMiddleware(thunk))
+    );
 
 firebase.initializeApp(fbConfig)
 firebase.firestore()
