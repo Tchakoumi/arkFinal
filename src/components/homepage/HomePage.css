@@ -77,7 +77,6 @@ footer{
 
 .produits{
     display: grid;
-    width: 200px;
     height: 300px;
     justify-content: center;
 }
@@ -105,7 +104,7 @@ footer{
     width: 33vw;
     /* height: fit-content; */
     align-content: flex-start;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border-left: 1px solid black;
     background-color: chartreuse;
 }
