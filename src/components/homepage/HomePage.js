@@ -121,61 +121,61 @@ class HomePage extends Component {
                             </form>
                         </div>
                         
-                        <div className="bottomPanes">
-                            <div className="content-produits">
-                                {this.products()}
-                            </div>
-                            {
-                                this.state.open !==""?(
-                                    <div className="productDetails">
-                                        <label onClick={()=>{this.setState({open:""})}}>X</label>
-                                        <label className="early">Nom de produit: {"Robes antaillee 6 pieds sous terre"}</label>
-                                        <label>Marque:{"Sun Glasses Corp"}</label>
-                                        <label>Evaluation: 5 Stars</label>
-                                        <div className="tremble">
-                                            <label>Produit:</label>
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                            <img src={logo192} height="50px" width="50px" alt="hello" />
-                                        </div>
-                                        <div className="twoDivisions">
-                                            <div className="imgBtns">
-                                                <div>
-                                                    <img src="" height="200px" width="200px"  alt="helloworld" />
-                                                    <div className="iBtns">
-                                                        <button>Acheter</button>
-                                                        <button onClick={()=>{this.addProductToCart(this.state.open)}}>Ajouter au panier</button>
-                                                    </div>
+                        {/* <div className="bottomPanes"> */}
+                        <div className="content-produits">
+                            {this.products()}
+                        </div>
+                        {
+                            this.state.open !==""?(
+                                <div className="productDetails">
+                                    <label onClick={()=>{this.setState({open:""})}}>X</label>
+                                    <label className="early">Nom de produit: {"Robes antaillee 6 pieds sous terre"}</label>
+                                    <label>Marque:{"Sun Glasses Corp"}</label>
+                                    <label>Evaluation: 5 Stars</label>
+                                    <div className="tremble">
+                                        <label>Produit:</label>
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                        <img src={logo192} height="50px" width="50px" alt="hello" />
+                                    </div>
+                                    <div className="twoDivisions">
+                                        <div className="imgBtns">
+                                            <div>
+                                                <img src="" height="200px" width="200px"  alt="helloworld" />
+                                                <div className="iBtns">
+                                                    <button>Acheter</button>
+                                                    <button onClick={()=>{this.addProductToCart(this.state.open)}}>Ajouter au panier</button>
                                                 </div>
                                             </div>
-                                            <div className="productOthers">
-                                                <label className="productRoute">{"Categorie"} -> {"SubCategory"} -> {"Robes antaille 6 pieds sous terre"}</label>
-                                                <div className="details">
-                                                    <label>Details du produit</label><br />
-                                                    <label>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem</label>
-                                                </div>
-                                                <div className="colorBtn">
-                                                    <label>Couleur: </label>
-                                                    <button>Bleu</button>
-                                                    <button>Vert</button>
-                                                    <button>Noir</button>
-                                                </div>
-                                                <div className="sizeBtn">
-                                                    <label>Size: </label>
-                                                    <button>X</button>
-                                                    <button>XL</button>
-                                                    <button>XXL</button>
-                                                </div>
+                                        </div>
+                                        <div className="productOthers">
+                                            <label className="productRoute">{"Categorie"} -> {"SubCategory"} -> {"Robes antaille 6 pieds sous terre"}</label>
+                                            <div className="details">
+                                                <label>Details du produit</label><br />
+                                                <label>lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem</label>
+                                            </div>
+                                            <div className="colorBtn">
+                                                <label>Couleur: </label>
+                                                <button>Bleu</button>
+                                                <button>Vert</button>
+                                                <button>Noir</button>
+                                            </div>
+                                            <div className="sizeBtn">
+                                                <label>Size: </label>
+                                                <button>X</button>
+                                                <button>XL</button>
+                                                <button>XXL</button>
                                             </div>
                                         </div>
                                     </div>
-                                ):(null)
-                            }
-                        </div>
+                                </div>
+                            ):(null)
+                        }
+                        {/* </div> */}
                     </div>
                 </div>
 

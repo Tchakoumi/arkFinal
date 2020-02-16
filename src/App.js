@@ -5,11 +5,11 @@ import React, {Component} from 'react';
 // import ConfirmOrder from './components/confirmOrder/ConfirmOrder'
 // import ChangeParameter from './components/changeParameter/ChangeParameter'
 // import ManageProduct from './components/manager/ManageProduct'
-// import HomePage from './components/homepage/HomePage'
+import HomePage from './components/homepage/HomePage'
 // import Panier from './components/Panier/Panier'
 // import SignUp from './components/SignUp/SignUp'
 // import SignIn from './components/signIn/SignIn'
-import ComingSoon from './components/comingSoon/ComingSoon'
+// import ComingSoon from './components/comingSoon/ComingSoon'
 // import Navbar from './components/Navbar_Danie/signedInLinks/SignedInLinks'
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
         <div className="App">
           {/* <Navbar /> */}
           <Switch>
-            <Route exact path='/' component={ComingSoon} />
+            <Route exact path='/' component={HomePage} />
             {/* <Route exact path='/:userId/homepage' component={HomePage} />
             <Route exact path='/:userId/cart' component={Panier} />
             <Route exact path='/signup' component={SignUp} />
